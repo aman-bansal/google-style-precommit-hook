@@ -8,6 +8,7 @@ then
 fi
 cd ..
 
-changed_java_files=$(git diff --cached --name-only --diff-filter=ACMR | grep ".*java$" )
-echo $changed_java_files
-java -jar .cache/google-java-format-1.13.0-all-deps.jar --replace $changed_java_files
+
+all_files=$( find . -type f -path "./src/*/*" -name "*.java" )
+echo $all_files
+java -jar .cache/google-java-format-1.13.0-all-deps.jar -i $all_files
